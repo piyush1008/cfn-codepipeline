@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: "Creating new s3 bucket"
+
+Resources: 
+  s3Bucket:
+    Type: AWS::S3::Bucket
+
+
+Outputs:
+  BucketArn:
+    Description: "The arn of the bucket s3"
+    Value: !GetAtt s3Bucket.Arn
+  BucketName:
+    Description: "the bucket name"
+    Value: !Ref s3Bucket

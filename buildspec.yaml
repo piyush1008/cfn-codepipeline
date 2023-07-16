@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  build:
+    commands:
+      - aws cloudformation package --template-file s3template.yaml --s3-bucket piyush-pipeline-demo --output-template-file packaged-template.yaml
+  post_build:
+    commands:
+      - aws cloudformation deploy --template-file packaged-template.yaml --stack-name piyush-demo-stack --capabilities CAPABILITY_IAM
